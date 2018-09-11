@@ -6,14 +6,14 @@ Make sure you commit this often with meaningfull messages.
 ### Background
 
 The exponential distribution is defined by its cumulative distribution function
-$$F(x) = 1-e^{-\lambda x}$$
+\(F(x) = 1-e^{-\lambda x}\)
 
 The R function ***rexp()*** generates random variables with an exponential distribution. For example 
 <center><strong>rexp(n=10, rate=5)</strong> </center>
 
-results in 10 exponentially distributed numbers with a rate $\lambda=5$. If you leave out the 5 and just have
+results in 10 exponentially distributed numbers with a rate \(\lambda=5\). If you leave out the 5 and just have
 <center><strong>rexp(n=10) </strong></center>
-then this results in 10 exponentially distributed numbers with a rate $\lambda=1$, this is also referred to as the "standard exponential distribution". 
+then this results in 10 exponentially distributed numbers with a rate \(\lambda=1\), this is also referred to as the "standard exponential distribution". 
 
 ### Part 1
 
@@ -39,7 +39,7 @@ For each plot, explain in words what's going on.
 
 5. R's capacity for data and computation is large to what was available 10 years ago. 
     a. To show this, generate 1.1 million numbers from the standard exponential distribution and store them in a vector called `big.exp.draws.1`. Calculate the mean and standard deviation.
-    b. Plot a histogram of `big.exp.draws.1`.  Does it match the function $1-e^{-x}$?  Should it? 
+    b. Plot a histogram of `big.exp.draws.1`.  Does it match the function \(1-e^{-x}\)?  Should it? 
     c. Find the mean of all of the entries in `big.exp.draws.1` which are strictly greater than 1. You may need to first create a new vector to identify which elements satisfy this.
     d. Create a matrix, `big.exp.draws.1.mat`, containing the the values in 
 `big.exp.draws.1`, with 1100 rows and 1000 columns. Use this matrix as the input to the `hist()` function and save the result to a variable of your choice. What happens to your data?
