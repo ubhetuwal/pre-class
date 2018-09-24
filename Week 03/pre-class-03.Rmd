@@ -3,46 +3,37 @@
 
 Make sure you commit this often with meaningfull messages. 
 
-### Background
 
-The exponential distribution is defined by its cumulative distribution function
-\(F(x) = 1-e^{-\lambda x}\)
-
-The R function ***rexp()*** generates random variables with an exponential distribution. For example 
-<center><strong>rexp(n=10, rate=5)</strong> </center>
-
-results in 10 exponentially distributed numbers with a rate \(\lambda=5\). If you leave out the 5 and just have
-<center><strong>rexp(n=10) </strong></center>
-then this results in 10 exponentially distributed numbers with a rate \(\lambda=1\), this is also referred to as the "standard exponential distribution". 
-
-### Part 1
+### Getting Started
 
 
-1. Generate 200 random values from the standard exponential distribution and store them in a vector `exp.draws.1`.  Find the mean and standard deviation of `exp.draws.1`.
+We will work with the dataset called [gapminder](https://github.com/jennybc/gapminder), this is a cleaned up version from [Gapminder Data](http://www.gapminder.org/data/). Gapminder contains a lot of great data on all of the nations of the world. We first need to install the gapminder package in R. 
 
-2. Repeat, but change the rate to 0.2, 5, 7.3 and 10, storing the results in vectors called  `exp.draws.0.2`,  `exp.draws.5`,  `exp.draws.7.3` and  `exp.draws.10`. 
-
-3. The function `plot()` is the generic function in R for the visual display of data. `hist()` is a function that takes in and bins data as a side effect. To use this function, we must first specify what we'd like to plot.
-    a. Use the `hist()` function to produce a histogram of your standard exponential distribution. 
-    b. Use `plot()` with this vector to display the random values from your standard distribution in order.
-    c. Now, use `plot()` with two arguments -- any two of your other stored random value vectors -- to create a scatterplot of the two vectors against each other.
-
-4. We'd now like to compare the properties of each of our vectors. Begin by creating a vector of the means of each of our five distributions in the order we created them and saving this to a variable name of your choice. Using this and other similar vectors, create the following scatterplots and explain in words what is going on:
-    a. The five means versus the five rates used to generate the distribution.
-    b. The standard deviations versus the rates.
-    c. The means versus the standard deviations.
-
-For each plot, explain in words what's going on.
-
-### Part II (PHP 2560 Only)
+```
+install.packages("gapminder")
+```
 
 
-5. R's capacity for data and computation is large to what was available 10 years ago. 
-    a. To show this, generate 1.1 million numbers from the standard exponential distribution and store them in a vector called `big.exp.draws.1`. Calculate the mean and standard deviation.
-    b. Plot a histogram of `big.exp.draws.1`.  Does it match the function \(1-e^{-x}\)?  Should it? 
-    c. Find the mean of all of the entries in `big.exp.draws.1` which are strictly greater than 1. You may need to first create a new vector to identify which elements satisfy this.
-    d. Create a matrix, `big.exp.draws.1.mat`, containing the the values in 
-`big.exp.draws.1`, with 1100 rows and 1000 columns. Use this matrix as the input to the `hist()` function and save the result to a variable of your choice. What happens to your data?
-    e. Calculate the mean of the 371st column of `big.exp.draws.1.mat`.
-    f. Now, find the means of all 1000 columns of `big.exp.draws.1.mat` simultaneously. Plot the histogram of column means.  Explain why its shape does not match the histogram in problem 5b).
-   
+
+```
+library(dplyr)
+library(gapminder)
+gapminder
+```
+
+
+
+### Pre-Class Problems
+
+Use **dplyr** functions to address the following questions:
+
+1. How many unique countries are represented per continent?
+2. Which European nation had the lowest GDP per capita in 1997? 
+3. According to the data available, what was the average life expectancy across each continent in the 1980s?
+4. What 5 countries have the highest total GDP over all years combined?
+5. What countries and years had life expectancies of _at least_ 80 years? _N.b. only output the columns of interest: country, life expectancy and year (in that order)._
+6. What 10 countries have the strongest correlation (in either direction) between life expectancy and per capita GDP?
+7. Which combinations of continent (besides Asia) and year have the highest average population across all countries? _N.b. your output should include all results sorted by highest average population_. With what you already know, this one may stump you. See [this Q&A](http://stackoverflow.com/q/27207963/654296) for how to `ungroup` before `arrange`ing. This also [behaves differently in more recent versions of dplyr](https://github.com/hadley/dplyr/releases/tag/v0.5.0).
+8. Which three countries have had the most consistent population estimates (i.e. lowest standard deviation) across the years of available data? 
+9. Subset **gm** to only include observations from 1992 and store the results as **gm1992**. What kind of object is this?
+10. Which observations indicate that the population of a country has *decreased* from the previous year **and** the life expectancy has *increased* from the previous year? See [the vignette on window functions](https://cran.r-project.org/web/packages/dplyr/vignettes/window-functions.html).
