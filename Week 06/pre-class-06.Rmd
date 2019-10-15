@@ -1,14 +1,4 @@
-# pre-class
-
-
-Make sure you commit this often with meaningful messages. 
-
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
+# pre-class-06
 
 1. Read the source code for each of the following three functions, puzzle out what they do, and then brainstorm better names.
 
@@ -20,6 +10,7 @@ f2 <- function(x) {
   if (length(x) <= 1) return(NULL)
   x[-length(x)]
 }
+
 f3 <- function(x, y) {
   rep(y, length.out = length(x))
 }
@@ -31,6 +22,14 @@ rnorm() is used to generate random number for univariate normal distribution. Wh
 
 
 ## 3. Use `lapply()` and an anonymous function to find the coefficient of variation (the standard deviation divided by the mean) for all columns in the mtcars dataset. 
+
+anonym<-function(x){
+  coeff_dev<- sd(x)/mean(x)
+  print(coeff_dev)
+}
+lapply(mtcars,anonym)
+
+
 
 4. Use vapply() to:
     a. Compute the standard deviation of every column in a numeric data frame.
