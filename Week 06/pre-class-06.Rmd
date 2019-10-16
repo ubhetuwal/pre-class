@@ -31,6 +31,21 @@ lapply(mtcars,anonym)
 
 
 
-4. Use vapply() to:
-    a. Compute the standard deviation of every column in a numeric data frame.
-    b. Compute the standard deviation of every numeric column in a mixed data frame. (Hint: you’ll need to use vapply() twice.)
+## 4. Use vapply() to:
+## a. Compute the standard deviation of every column in a numeric data frame.
+    anom<-function(x){
+  if(is.numeric(x)){
+    sd(x)
+  } else {
+      print("Numeric dataset needed")
+    }
+}
+vapply(mtcars,anom,numeric(1))
+     
+ ## b. Compute the standard deviation of every numeric column in a mixed data frame. (Hint: you’ll need to use vapply() twice.)
+    
+    vapply(gapminder[vapply(gapminder, is.numeric, logical(1))], anom, numeric(1))
+    
+    
+    
+    
