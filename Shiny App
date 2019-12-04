@@ -1,0 +1,19 @@
+library(shiny)
+ui <- fluidPage(
+  sliderInput(inputId ="num",
+              label ="Choose a standard z-value",
+              value = 0,min= -3.5,max=3.5),plotOutput("normalcurve"),verbatimTextOutput("pvalue"))
+
+server <- function(input, output) {
+  
+  output$normalcurve <- renderPlot({
+    curve(1/sqrt(2*pi)*exp(-x^2/2),-3.5,3.5)
+    abline(v=input$num, col ="blue")     
+    })
+  output$pvalue <- renderPrint({
+    1-pnorm(input$num)   
+  })
+  
+}
+
+shinyApp(ui = ui, server = server)
